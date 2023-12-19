@@ -31,6 +31,7 @@ library
       ParBK_Naive
       ParBK_Strategy
       SeqBK
+      Test
       Util
   other-modules:
       Paths_MaximalClique
@@ -57,7 +58,7 @@ executable MaximalClique-exe
       Paths_MaximalClique
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -eventlog -O2 -RTS
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -O2 -RTS
   build-depends:
       MaximalClique
     , base >=4.7 && <5

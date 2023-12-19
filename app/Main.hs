@@ -10,6 +10,7 @@ import ParBK_Strategy(strategy_basic, strategy_chunked, strategy_depthLimited)
 import Util (readGraph, printResult_Naive, printResult_DataStructure)
 import Control.Parallel.Strategies(using)
 import GenerateGraph (generateEdges_Random, generateEdges_kClique, writeGraphToFile)
+import Test (validateAlgorithm)
 
 main :: IO ()
 main = do
@@ -22,8 +23,11 @@ main = do
         -- Compute maximal clique functionality
         "compute":readpath:writepath:mode -> computeMaximalClique readpath writepath mode
 
+        -- Test functionality
+        "test":inputfile:outputfile:[] -> validateAlgorithm inputfile outputfile
+
         -- Error handling for incorrect usage
-        _ -> putStrLn "Usage: gen <mode> <args>..<args> <outfile> | compute <readpath> <writepath> <mode> (<mode arg>)"
+        _ -> putStrLn "Usage: gen <mode> <args>..<args> <outfile> | compute <readpath> <writepath> <mode> (<mode arg>) | test <inputfile> <outputfile>"
 
 -- Function to generate a random graph
 generateRandomGraph :: String -> String -> IO ()
