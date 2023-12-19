@@ -48,6 +48,7 @@ library
     , monad-par
     , parallel
     , random
+    , split
   default-language: Haskell2010
 
 executable MaximalClique-exe
@@ -58,16 +59,17 @@ executable MaximalClique-exe
       Paths_MaximalClique
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -O2 -RTS
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -eventlog -O2 -RTS
   build-depends:
       MaximalClique
-    , base >=4.7 && <5
+    , base >=4.7
     , containers
     , deepseq
     , directory
     , monad-par
     , parallel
     , random
+    , split
   default-language: Haskell2010
 
 test-suite MaximalClique-test
@@ -82,11 +84,12 @@ test-suite MaximalClique-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       MaximalClique
-    , base >=4.7 && <5
+    , base >=4.7
     , containers
     , deepseq
     , directory
     , monad-par
     , parallel
     , random
+    , split
   default-language: Haskell2010

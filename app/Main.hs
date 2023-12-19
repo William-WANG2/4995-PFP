@@ -7,7 +7,7 @@ import ParBK_Naive (getMaximalCliques)
 import SeqBK (getMaximalCliques)
 import ParBK_DataStructure(getMaximalCliques)
 import ParBK_Strategy(strategy_basic, strategy_chunked, strategy_depthLimited)
-import Util (readGraph, printResult_Naive, printResult_DataStructure)
+import Util (readGraph, printResult_Naive, printResult_DataStructure, printResult_DataStructure_ParBasic, printResult_DataStructure_Par, extractClique, extractCliquePar_Depth, extractCliquePar_Chunk)
 import Control.Parallel.Strategies(using)
 import GenerateGraph (generateEdges_Random, generateEdges_kClique, writeGraphToFile)
 import Test (validateAlgorithm)
@@ -65,9 +65,9 @@ computeMaximalClique readpath writepath mode = do
             case mode of
                 ["seq"] -> printResult_Naive (SeqBK.getMaximalCliques graph) writepath
                 ["par_naive"] -> printResult_Naive (ParBK_Naive.getMaximalCliques graph) writepath
-                ["par_basic"] -> printResult_DataStructure ((ParBK_DataStructure.getMaximalCliques graph) `using` ParBK_Strategy.strategy_basic) writepath
-                "par_chunked":chunkSize:[] -> printResult_DataStructure ((ParBK_DataStructure.getMaximalCliques graph) `using` ParBK_Strategy.strategy_chunked (read chunkSize :: Int)) writepath
-                "par_depthLimited":maxDepth:[] -> printResult_DataStructure ((ParBK_DataStructure.getMaximalCliques graph) `using` ParBK_Strategy.strategy_depthLimited (read maxDepth :: Int)) writepath
+                ["par_basic"] -> printResult_DataStructure_ParBasic ((ParBK_DataStructure.getMaximalCliques graph) `using` ParBK_Strategy.strategy_basic) writepath
+                "par_chunked":chunkSize:[] -> printResult_DataStructure_Par extractCliquePar_Chunk (read chunkSize :: Int) ((ParBK_DataStructure.getMaximalCliques graph) `using` ParBK_Strategy.strategy_chunked (read chunkSize :: Int)) writepath
+                "par_depthLimited":maxDepth:[] -> printResult_DataStructure_Par extractCliquePar_Depth (read maxDepth :: Int) ((ParBK_DataStructure.getMaximalCliques graph) `using` ParBK_Strategy.strategy_depthLimited (read maxDepth :: Int)) writepath
                 _ -> putStrLn "Invalid mode: must be either 'seq', 'par_naive', 'par_basic', 'par_chunked <chunkSize>' or 'par_depthLimited <maxDepth>'"
             putStrLn $ "Results written to: " ++ writepath
 
