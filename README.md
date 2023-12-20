@@ -40,7 +40,12 @@ To find all maximal cliques for a graph
 
 ```sh
 # +RTS = Run Time System, -N2 = use 2 cores, flags are for eventlog
-cabal exec -- MaximalClique-exe compute ${input_file} ${output_file} ${mode} +RTS -N2 -lfs 
+# running the algorithm
+# generate a graph
+# test the output to determine if it's valid given input
+cabal exec -- MaximalClique-exe compute ${input_file} ${output_file} ${mode} +RTS -N2 -lfs
+cabal exec -- MaximalClique-exe gen <mode> <args>..<args> <outfile>
+cabal exec -- MaximalClique-exe test <inputfile> <outputfile>
 ```
 
 Then a log file with extension `.eventlog` should be generated, which can be accessed using
