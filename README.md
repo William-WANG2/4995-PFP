@@ -48,6 +48,21 @@ cabal exec -- MaximalClique-exe gen <mode> <args>..<args> <outfile>
 cabal exec -- MaximalClique-exe test <inputfile> <outputfile>
 ```
 
+modes for computational functionality
+```sh
+compute ${input_file} ${output_file} seq
+compute ${input_file} ${output_file} par_naive
+compute ${input_file} ${output_file} par_basic
+compute ${input_file} ${output_file} par_chunked chunkSize
+compute ${input_file} ${output_file} par_depthLimited maxDepth
+```
+
+modes for generation functionality
+```sh
+gen random n ${output_file}
+gen kclique n k ${output_file}
+```
+
 Then a log file with extension `.eventlog` should be generated, which can be accessed using
 
 ```sh
