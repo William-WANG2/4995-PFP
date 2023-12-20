@@ -1,8 +1,8 @@
-# MaximalClique
+# Parallel Functional Programming: Maximal Clique
 
 ## Build
-
-We use [ThreadScope](https://github.com/haskell/ThreadScope) to profiling parallel Haskell programs. Firstly, use `cabal get threadscope` to install it.
+Dependencies: Haskell toolchain including Cabal for building and packaging the project. <br/>
+We use [ThreadScope](https://github.com/haskell/ThreadScope) to profile parallel Haskell programs. Firstly, use `cabal get threadscope` to install it.
 
 ### MacOS
 
@@ -39,7 +39,7 @@ cabal v2-install # to build and install the binary
 To find all maximal cliques for a graph
 
 ```sh
-# +RTS = Run Time System, -N2 = use 2 cores, flags are for eventlog
+# +RTS = Run Time System, -N2 = use 2 cores, flags are for the eventlog
 # running the algorithm
 # generate a graph
 # test the output to determine if it's valid given input
